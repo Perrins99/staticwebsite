@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-deploy:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -33,5 +33,19 @@ jobs:
     - run: cd staticwebsite
     - run: npm ci
     - run: npm run deploy # this command builds and deploys
+    
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    
+    steps:  
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: src
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
 
