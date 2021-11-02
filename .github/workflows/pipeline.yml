@@ -23,16 +23,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: |
-        sudo apt-add-repository ppa:git-core/ppa
-        sudo apt-get update
-        sudo apt-get install git
-    
-    - run: git config --global user.name "Perrins99"
-    - run: git clone https://github.com/Perrins99/staticwebsite
-    - run: cd staticwebsite
+        
     - run: npm ci
-    - run: npm run deploy # this command builds and deploys
+    - run: npm run build
     
   deploy:
     needs: [build]
