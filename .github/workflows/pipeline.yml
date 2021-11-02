@@ -33,12 +33,9 @@ jobs:
     
     steps:  
       - name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          target_branch: gh-pages
-          build_dir: main/src
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages # The branch the action should deploy to.
+          folder: . # The folder the action should deploy.
   
 
