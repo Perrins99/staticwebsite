@@ -21,7 +21,7 @@ function App() {
           </a>
         </p>
         <p>
-          This paragraph was added to test if pipeline worked.
+          This paragraph was added to test if pipeline worked and apparently it does :D.
         </p>
       </header>
     </div>
